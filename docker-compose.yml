@@ -1,0 +1,19 @@
+version: '3.8'
+
+name: issues_tracker
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+  
+  frontend:
+    build:
+      context: .
+      dockerfile: ./client/Dockerfile
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
